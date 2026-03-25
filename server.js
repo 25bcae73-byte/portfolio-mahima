@@ -79,7 +79,11 @@ app.post('/api/contact', async (req, res) => {
 });
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
-  console.log(`Don't forget to create your 'portfolio_db' database and 'contacts' table!`);
-});
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}/`);
+    console.log(`Don't forget to create your 'portfolio_db' database and 'contacts' table!`);
+  });
+}
+
+module.exports = app;
